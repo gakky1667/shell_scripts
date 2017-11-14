@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+		echo "e.g., ./top_command \"node_name\""
+		exit 1
+fi
+
+pid=$(pidof $1)
+echo talker is ${pid}
+echo PID USER PR NI VIRT RES SHR S %CPU %MEM
+RUNCMD='top -d1 | grep ${pid}'
+
+eval "${RUNCMD}"
+
